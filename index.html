@@ -14,6 +14,7 @@
       align-items: center;
       height: 100vh;
       flex-direction: column;
+      text-align: center;
     }
     h1 {
       margin-bottom: 10px;
@@ -29,21 +30,21 @@
 
   <script>
     function calculateMillersTime() {
-      const releaseDate = new Date('2014-10-26T00:00:00Z');
-      const now = new Date();
-      
+      const releaseDate = new Date('2014-10-26T00:00:00Z'); // Interstellar release date
+      const now = new Date(); // Current date
+
       // Calculate time difference in milliseconds
       const diffInMs = now - releaseDate;
-      
-      // Convert milliseconds to Earth hours
-      const diffInHours = diffInMs / (1000 * 60 * 60);
 
-      // Conversion: 1 hour on Miller's planet = 7 Earth years = 2555.75 Earth days
-      const millersTimeHours = diffInHours / (7 * 365.25 / 24);
+      // Convert milliseconds to Earth hours
+      const diffInEarthHours = diffInMs / (1000 * 60 * 60);
+
+      // Conversion: 1 Miller hour = 7 Earth years = 7 * 365.25 * 24 hours
+      const earthHoursOnMiller = diffInEarthHours / (7 * 365.25 * 24);
 
       // Display result with 6 decimal places
       document.getElementById('time').innerText = 
-        `Time passed on Miller's planet: ${millersTimeHours.toFixed(6)} hours`;
+        `Time passed on Miller's planet (in Earth hours): ${earthHoursOnMiller.toFixed(6)} hours`;
     }
 
     // Calculate and update time every second
