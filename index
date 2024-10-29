@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miller's Planet Time</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Miller's Planet Time Since Interstellar Release</h1>
+  <p id="time"></p>
+
+  <script>
+    function calculateMillersTime() {
+      const releaseDate = new Date('2014-10-26T00:00:00Z');
+      const now = new Date();
+      
+      // Calculate time difference in milliseconds
+      const diffInMs = now - releaseDate;
+      
+      // Convert milliseconds to Earth hours
+      const diffInHours = diffInMs / (1000 * 60 * 60);
+
+      // Conversion: 1 hour on Miller's planet = 7 Earth years = 2555.75 Earth days
+      const millersTimeHours = diffInHours / (7 * 365.25 / 24);
+
+      // Display result with 6 decimal places
+      document.getElementById('time').innerText = 
+        `Time passed on Miller's planet: ${millersTimeHours.toFixed(6)} hours`;
+    }
+
+    // Calculate and update time every second
+    setInterval(calculateMillersTime, 1000);
+  </script>
+</body>
+</html>
